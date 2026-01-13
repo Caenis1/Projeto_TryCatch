@@ -1,81 +1,55 @@
 Try-Catch Project — Exceções e Regras de Negócio em Java
 
-Visão Geral
+Visão Geral:
 
 Este projeto demonstra a aplicação de tratamento de exceções em Java com foco em clareza, boas práticas e organização de código.
 
 A aplicação simula a consulta de clientes por código, validando regras de negócio e tratando erros de forma controlada por meio de exceções de domínio, evitando fluxos condicionais excessivos e melhorando a legibilidade.
 
-Objetivo Técnico
+Objetivo Técnico:
 
-Aplicar try/catch de forma semântica (não apenas defensiva)
+Aplicar try/catch de forma semântica (não apenas defensiva);
 
-Criar e utilizar exceções personalizadas
+Criar e utilizar exceções personalizadas;
 
-Separar responsabilidades entre Service e DAO
+Separar responsabilidades entre Service e DAO;
 
-Demonstrar domínio básico de Streams API
+Demonstrar domínio básico de Streams API;
 
-Desenvolver testes automatizados com JUnit 5
+Desenvolver testes automatizados com JUnit 5;
 
-Simular dependências com Mockito
-
-Tecnologias Utilizadas
-
-Java 17+
-
-Maven
-
-JUnit 5
-
-Mockito
-
-Streams API
-
-Swing (JOptionPane) para simulação de entrada
+Simular dependências com Mockito;
 
 
-Arquitetura e Decisões
+Tecnologias Utilizadas:
 
-ClienteDao: Simula uma base de dados em memória
+Java 17+;
 
-Utiliza Stream.anyMatch() para demonstrar operações funcionais simples e legíveis
+Maven;
 
-public boolean existe(String codigo) {
-    return CLIENTES.stream()
-            .anyMatch(c -> c.equals(codigo));
-}
+JUnit 5;
 
-ClienteService: Centraliza a regra de negócio
+Mockito;
 
-Lança uma exceção de domínio quando a regra não é satisfeita
+Streams API;
 
-public void consultarCliente(String codigo)
-        throws ClienteNaoEncontradoException {
-
-    if (!clienteDAO.existe(codigo)) {
-        throw new ClienteNaoEncontradoException(
-                "Cliente com código " + codigo + " não foi encontrado."
-        );
-    }
-}
+Swing (JOptionPane) para simulação de entrada;
 
 
-Essa abordagem evita: Retornos ambíguos e uso excessivo de if/else
 
-Lógica de negócio espalhada pela aplicação
+Lógica de negócio espalhada pela aplicação:
 
-App: Responsável apenas pela interação com o usuário, trata a exceção de forma centralizada e mantém o fluxo principal limpo
+App: Responsável apenas pela interação com o usuário, trata a exceção de forma centralizada e mantém o fluxo principal limpo;
 
-Testes Automatizados
+Testes Automatizados;
 
 Os testes validam:
 
-Cenários de sucesso
+Cenários de sucesso;
 
-Lançamento correto de exceções
+Lançamento correto de exceções;
 
-Interação entre Service e DAO
+Interação entre Service e DAO;
 
 
 Comportamento esperado sem dependência de implementação real
