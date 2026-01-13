@@ -34,23 +34,10 @@ Streams API
 
 Swing (JOptionPane) para simulação de entrada
 
-Estrutura do Projeto
-
-src/
- ├── main/java/try_catch_project
- │   ├── App.java
- │   ├── ClienteDao.java
- │   ├── ClienteService.java
- │   └── ClienteNaoEncontradoException.java
- │
- └── test/java/try_catch_project
-     └── AppTest.java
 
 Arquitetura e Decisões
 
-ClienteDao
-
-Simula uma base de dados em memória
+ClienteDao: Simula uma base de dados em memória
 
 Utiliza Stream.anyMatch() para demonstrar operações funcionais simples e legíveis
 
@@ -59,9 +46,7 @@ public boolean existe(String codigo) {
             .anyMatch(c -> c.equals(codigo));
 }
 
-ClienteService
-
-Centraliza a regra de negócio
+ClienteService: Centraliza a regra de negócio
 
 Lança uma exceção de domínio quando a regra não é satisfeita
 
@@ -76,21 +61,11 @@ public void consultarCliente(String codigo)
 }
 
 
-Essa abordagem evita:
-
-Retornos ambíguos
-
-Uso excessivo de if/else
+Essa abordagem evita: Retornos ambíguos e uso excessivo de if/else
 
 Lógica de negócio espalhada pela aplicação
 
-App
-
-Responsável apenas pela interação com o usuário
-
-Trata a exceção de forma centralizada
-
-Mantém o fluxo principal limpo
+App: Responsável apenas pela interação com o usuário, trata a exceção de forma centralizada e mantém o fluxo principal limpo
 
 Testes Automatizados
 
@@ -102,29 +77,10 @@ Lançamento correto de exceções
 
 Interação entre Service e DAO
 
+
 Comportamento esperado sem dependência de implementação real
 
-Execução:
 
-mvn test
-
-
-Observação: Em versões mais recentes do Java (ex: Java 23), o Mockito pode apresentar limitações relacionadas ao Byte Buddy.
-O projeto está compatível com ambientes acadêmicos e avaliativos padrão.
-
-Boas Práticas Aplicadas
-
-Exceções específicas de domínio
-
-Separação clara de responsabilidades
-
-Código legível e comentado com propósito técnico
-
-Uso consciente de Streams
-
-Testes focados em comportamento
-
-Status
 
 ✔ Concluído
 📚 Projeto educacional com foco em boas práticas
